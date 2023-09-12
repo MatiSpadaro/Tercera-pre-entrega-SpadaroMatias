@@ -8,9 +8,11 @@ class Usuario(models.Model):
 class Productos(models.Model):
     claseProducto = models.CharField(max_length=40)
     nombreProducto = models.CharField(max_length=40)
+    Stock = models.IntegerField(default=0)
+    
     
     def __str__(self):
-        return f"{self.claseProducto} - {self.nombreProducto}"
+        return f"{self.claseProducto} - {self.nombreProducto} - Stock = {self.Stock}"
     
 class Pedidos(models.Model):
     modelo3D = models.CharField(max_length=40)
