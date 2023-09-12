@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from .models import *
 from .forms import PedidosFormulario
 
@@ -26,4 +26,16 @@ def pedidos(request):
     else:
         miFormulario = PedidosFormulario()
         return render(request,"pedidos.html",{"miFormulario": miFormulario})
+    
+def busquedaProductos(request):
+    return render(request, "busquedaProductos.html")
+
+def buscar(request: HttpRequest ):
+    try:
+        if request.GET["nombreProducto"]:
+            nombreProducto=request.GET["nombreProducto"]
+            producto = Productos.objects.filter(nombreProducto__icontains=nombreProducto)
+            return render(request,"resultadoBusqueda.html", {"nombreProducto":producto})
+    except:
+            return HttpResponse(f"No hay producto con ese nombre.")
     
