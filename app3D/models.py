@@ -16,5 +16,5 @@ class Productos(models.Model):
     
 class Pedidos(models.Model):
     modelo3D = models.CharField(max_length=40)
-    filamento = models.CharField(max_length=40)
+    material = models.CharField(max_length=40)
     

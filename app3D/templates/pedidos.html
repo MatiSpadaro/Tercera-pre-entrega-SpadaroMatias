@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+
+
+{% block contenidoQueCambia %}
+    
+<form action ="{% url 'Pedidos' %}" method="post"> {% csrf_token %}
+
+    <p>Producto : <input type="text" name = "modelo3D" ><p>    
+    <p>Cantidad : <input type="text" name = "material" ><p>  
+    <button type = "submit"> Hacer Pedido <button>
+<form>
+
+{% endblock contenidoQueCambia %}
+    
