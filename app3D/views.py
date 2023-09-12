@@ -8,7 +8,8 @@ def inicio(req):
     return render(req, "inicio.html")
 
 def productos(req):
-    return render(req, "productos.html")
+    producto = Productos.objects.all()
+    return render(req, "productos.html",{'productos':producto})
 
 def pedidos(request):
     
