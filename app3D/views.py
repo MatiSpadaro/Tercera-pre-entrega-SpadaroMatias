@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from .models import *
-from .forms import PedidosFormulario
+from .forms import PedidosFormulario, ProductosFormulario
 
 # Create your views here.
 def inicio(req):
@@ -11,6 +11,23 @@ def productos(req):
     producto = Productos.objects.all()
     return render(req, "productos.html",{'productos':producto})
 
+def agregarProductos(request):
+       
+    if request.method == "POST":
+        
+        miFormulario1 = ProductosFormulario(request.POST)
+        
+        if miFormulario1.is_valid():
+            
+            data = miFormulario1.cleaned_data
+            
+            producto=Productos(claseProducto=data["claseProducto"],nombreProducto=data["nombreProducto"])
+            producto.save()
+            return render(request,"Inicio.html")
+    else:
+        miFormulario1 = ProductosFormulario()
+        return render(request,"agregarProductos.html",{"miFormulario1": miFormulario1})
+    
 def pedidos(request):
     
     if request.method == "POST":

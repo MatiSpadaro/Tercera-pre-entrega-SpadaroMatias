@@ -2,7 +2,14 @@
 
 
 {% block contenidoQueCambia %}
-    
+
+    <form action="{% url 'buscar' %}" method="get">
+
+        <p>Producto: <input type="text" name="nombreProducto"></p>
+        <button type="submit">Buscar</button>
+
+    </form>
+
     <ul class="list-unstyled d-flex flex-wrap">
         {% for producto in productos %}
         <li class="col-md-3 mb-4">

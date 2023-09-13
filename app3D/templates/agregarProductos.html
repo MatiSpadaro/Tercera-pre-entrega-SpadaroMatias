@@ -1,0 +1,14 @@
+{% extends 'padre.html' %} 
+
+
+{% block contenidoQueCambia %}
+
+    <form action ="{% url 'agregarProductos' %}" method="post"> {% csrf_token %}
+
+        {{ miFormulario1.as_p }}
+        
+        <button type = "submit"> Agregar Producto </button>
+    <form>
+
+{% endblock contenidoQueCambia %}
+    

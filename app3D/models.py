@@ -9,6 +9,7 @@ class Productos(models.Model):
     claseProducto = models.CharField(max_length=40)
     nombreProducto = models.CharField(max_length=40)
     Stock = models.IntegerField(default=0)
+
     
     
     def __str__(self):
